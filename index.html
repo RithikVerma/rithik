@@ -1,16 +1,24 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/src/assets/icon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rithik Verma</title>
-</head>
-
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/src/assets/rv-monogram.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <script>
+      try {
+        const saved = localStorage.getItem('portfolio-theme')
+        if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved
+      } catch {
+        // The device preference still works when storage is unavailable.
+      }
+    </script>
+    <link rel="canonical" href="https://rithik-verma.vercel.app/" />
+    <meta name="description" content="Explore Rithik Verma’s work as a founding generalist at Rightfit.so and a mobile and web developer, including Shree Balaji Enterprises, FundingPe, and Smart Notice Board." />
+    <title>Rithik Verma — Software engineer</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
