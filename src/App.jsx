@@ -68,6 +68,17 @@ function App({ page }) {
   </>
 }
 
+function HeroRole() {
+  const [showMobile, setShowMobile] = useState(false)
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setShowMobile(current => !current), 3000)
+    return () => window.clearInterval(timer)
+  }, [])
+
+  return <p className="role">{showMobile ? 'Mobile Engineer' : 'Software Engineer'}</p>
+}
+
 function Portfolio() {
   return <>
       <section className="wrap hero" aria-labelledby="hero-title">
@@ -76,7 +87,7 @@ function Portfolio() {
           <img src={import.meta.env.BASE_URL + 'hero-waterfall.gif'} width="977" height="259" alt="" />
         </picture>
         <h1 id="hero-title">Rithik Verma</h1>
-        <p className="role">Software Engineer &amp; Mobile Engineer</p>
+        <HeroRole />
         <p className="hero-description">I build websites and mobile apps with React and React Native. At Rightfit.so, I work on the product and coordinate hiring with candidates and clients.</p>
         <div className="hero-actions">
           <span className="location"><FiMapPin aria-hidden="true" /> Bengaluru, India</span>
