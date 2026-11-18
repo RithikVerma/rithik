@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { ElasticSlider, HoldToConfirm, MagneticDock, PrecisionDial, SegmentedControl, StackedToasts } from '../craft/Studies'
-import '../craft/studies.css'
+import { studies } from '@creativity/catalog.js'
 import './CraftCollection.css'
 
 export const title = 'Interaction studies'
 export const description = 'Select a component to open it and explore the interaction.'
 
-const studies = [
-  { name: 'Precision dial', slug: 'precision-dial', date: 'Nov 18, 2026', Component: PrecisionDial },
-  { name: 'Magnetic dock', slug: 'magnetic-dock', date: 'Nov 18, 2026', Component: MagneticDock },
-  { name: 'Stacked toasts', slug: 'stacked-toasts', date: 'Nov 18, 2026', Component: StackedToasts },
-  { name: 'Elastic slider', slug: 'elastic-slider', date: 'Nov 18, 2026', Component: ElasticSlider },
-  { name: 'Hold to confirm', slug: 'hold-to-confirm', date: 'Nov 18, 2026', Component: HoldToConfirm },
-  { name: 'Segmented control', slug: 'segmented-control', date: 'Nov 18, 2026', Component: SegmentedControl },
-]
+function StudyDate({ date }) {
+  if (!date) return null
+  const label = new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC',
+  })
+  return <time dateTime={date}>{label}</time>
+}
 
 function selectedFromUrl() {
   const slug = new URLSearchParams(window.location.search).get('component')
@@ -44,7 +42,7 @@ export default function CraftCollection() {
       <section className="craft-detail" aria-labelledby="craft-detail-title">
         <button className="craft-back" type="button" onClick={() => updateSelection(null)}><span aria-hidden="true">&larr;</span> Back</button>
         <div className="craft-detail-head">
-          <div><h3 id="craft-detail-title">{selected.name}</h3><time dateTime="2026-11-18">{selected.date}</time></div>
+          <div><h3 id="craft-detail-title">{selected.title}</h3><StudyDate date={selected.date} /></div>
           <button className="craft-close" type="button" aria-label="Close component" onClick={() => updateSelection(null)}>&times;</button>
         </div>
         <div className="craft-detail-stage">{React.createElement(selected.Component)}</div>
@@ -56,8 +54,8 @@ export default function CraftCollection() {
     <div className="craft-list" role="list">
       {studies.map((study) => (
         <button className="craft-list-item" key={study.slug} type="button" role="listitem" onClick={() => updateSelection(study)}>
-          <strong>{study.name}</strong>
-          <time dateTime="2026-11-18">{study.date}</time>
+          <strong>{study.title}</strong>
+          <StudyDate date={study.date} />
         </button>
       ))}
     </div>

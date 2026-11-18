@@ -1,7 +1,5 @@
-# Adding a component to Creativity
+# Creativity gallery
 
-Add a JSX file to the `components` folder beside this file. Default-export a React component that can render without props. If your design needs props, default-export a preview that supplies them. Import any styles or assets from the component file.
+Add your component to the Creativity repository and register it in its `src/catalog.js`. Give the entry a unique, stable slug, a title, and a React component that renders without props. The portfolio also displays the optional ISO date. The Creativity app uses the additional descriptive fields from its existing entries.
 
-The gallery discovers each JSX file automatically. An optional exported `title` sets the display name, and an optional `description` adds a caption.
-
-Open `/creativity/` to preview the result. Include the new file in your next portfolio deployment to share it with visitors.
+Starting Vite or running a production build fetches the current Creativity main branch. A push to that branch triggers the portfolio's Vercel deploy hook through the Creativity repository's GitHub Actions workflow. Restart a running local dev server to load newer designs.
