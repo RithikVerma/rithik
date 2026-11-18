@@ -58,11 +58,19 @@ footer { justify-content: space-between; gap: 14px; padding-block: 20px; border-
 nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
 .creativity { padding-bottom: 40px; }
 .creativity .role { margin-top: 12px; }
-.component-entry + .component-entry { margin-top: 36px; }
-.component-preview { display: grid; place-items: center; min-height: 180px; padding: 24px; overflow: auto; border: 1px solid var(--line); background: var(--soft); }
-.component-entry h2 { margin-top: 14px; font-size: 21px; }
+.component-gallery { margin-top: 48px; }
+.component-entry { margin-bottom: 72px; }
+.component-heading { display: grid; grid-template-columns: 1fr minmax(240px, 520px); gap: 32px; align-items: end; margin-bottom: 20px; }
+.component-heading h2 { margin: 0; font-size: clamp(24px, 4vw, 42px); font-weight: 500; letter-spacing: -0.04em; }
+.component-heading p { margin: 0; color: var(--muted); line-height: 1.6; }
+.component-preview { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); }
+.creativity .component-preview { border: 0; border-radius: 0; }
+.creativity-detail { padding-top: 36px; }
+.creativity-detail .component-gallery { margin-top: 0; }
+.creativity-detail .component-entry { margin-bottom: 40px; }
+.creativity-detail .component-preview { overflow: visible; border: 0; border-radius: 0; background: transparent; }
+@media (max-width: 720px) { .component-heading { grid-template-columns: 1fr; gap: 10px; } }
 .component-entry p, .component-empty { color: var(--muted); line-height: 1.6; }
-.component-entry > p { margin-top: 4px; font-size: 14px; }
 
 @media (max-width: 680px) {
   .wrap { width: calc(100% - 38px); }

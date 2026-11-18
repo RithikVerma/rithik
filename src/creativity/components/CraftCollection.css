@@ -1,0 +1,20 @@
+.craft-list { border-top: 1px solid var(--line); }
+.craft-list-item { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; padding: 13px 0; border-bottom: 1px solid var(--line); color: var(--ink); text-align: left; transition: background 150ms ease, padding 150ms ease; }
+.craft-list-item:hover, .craft-list-item:focus-visible { padding-inline: 12px; background: var(--soft); }
+.craft-list-item:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
+.craft-list-item strong { font-size: 17px; font-weight: 400; letter-spacing: -.01em; }
+.craft-list-item time { flex: 0 0 auto; color: var(--muted); font-size: 16px; }
+.craft-back { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 42px; color: var(--muted); font-size: 16px; }
+.craft-back:hover { color: var(--ink); }
+.craft-detail-head { display: flex; align-items: start; justify-content: space-between; gap: 24px; margin-bottom: 40px; }
+.craft-detail-head h3 { margin: 0 0 5px; font-size: 20px; font-weight: 500; letter-spacing: -.02em; }
+.craft-detail-head time { color: var(--muted); font-size: 16px; }
+.craft-close { padding: 0 2px; color: var(--muted); font-size: 30px; font-weight: 200; line-height: 1; }
+.craft-close:hover { color: var(--ink); }
+.craft-detail-stage { display: grid; min-height: min(610px, 70vh); place-items: center; overflow: hidden; border-radius: 20px; background: var(--soft); color: var(--ink); }
+@media (max-width: 700px) {
+  .craft-list-item { gap: 14px; }
+  .craft-list-item strong { font-size: 15px; }
+  .craft-list-item time { font-size: 13px; }
+  .craft-detail-stage { min-height: 430px; border-radius: 16px; }
+}

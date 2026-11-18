@@ -1,0 +1,387 @@
+﻿.dial-study,
+.dock-study,
+.toast-study,
+.range-study,
+.hold-control,
+.segment-control {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #232420;
+}
+.dial-study {
+  display: grid;
+  justify-items: center;
+  transform: translateY(2px);
+}
+.dial-gauge {
+  position: relative;
+  width: 148px;
+  height: 148px;
+  touch-action: none;
+  cursor: ns-resize;
+  user-select: none;
+  border-radius: 50%;
+}
+.dial-tick {
+  position: absolute;
+  inset: 4px auto auto calc(50% - 0.7px);
+  height: 6px;
+  width: 1.4px;
+  background: #6b5936;
+  transform-origin: 50% 70px;
+}
+.dial-tick.major {
+  height: 10px;
+  background: #332e25;
+  width: 2px;
+}
+.dial-knob {
+  position: absolute;
+  inset: 21px;
+  border-radius: 50%;
+  padding: 6px;
+  background: repeating-conic-gradient(
+    from 2deg,
+    #292925 0deg 1.8deg,
+    #55534d 2.1deg 3.5deg,
+    #30302b 4deg 5deg
+  );
+  box-shadow:
+    0 2px 1px #171712,
+    0 6px 6px #58411066,
+    0 12px 15px #6854244d,
+    inset 0 1px 1px #aaa89b;
+}
+.dial-knob:before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #5a5a55, #353532 48%, #262625);
+  border: 1px solid #64645e;
+  box-shadow: 0 1px 3px #151512;
+}
+.dial-face {
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+}
+.dial-face b {
+  position: absolute;
+  top: 8px;
+  left: calc(50% - 2.5px);
+  height: 16px;
+  width: 5px;
+  border-radius: 3px;
+  background: #ff7842;
+  box-shadow: 0 1px 2px #151512;
+}
+.dial-reading {
+  font:
+    600 13px ui-monospace,
+    Consolas,
+    monospace;
+  letter-spacing: 0.02em;
+  margin-top: -10px;
+}
+.dial-reading span {
+  font-size: 10px;
+  color: #71664c;
+  margin-left: 2px;
+}
+.dock-study {
+  position: relative;
+}
+.dock-body {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px;
+  border-radius: 20px;
+  background: linear-gradient(155deg, #434740, #252a25 70%);
+  border: 1px solid #20241f;
+  box-shadow:
+    inset 0 1px 1px #72786d,
+    0 3px 0 #151a15,
+    0 12px 18px -5px #31422e5e,
+    0 25px 30px -15px #364b314a;
+}
+.dock-item {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 45px;
+  height: 45px;
+  border: 0;
+  border-radius: 12px;
+  transform-origin: center bottom;
+  transform: scale(var(--scale));
+  transition: transform 0.22s cubic-bezier(0.2, 0.85, 0.3, 1.25);
+  box-shadow:
+    inset 0 1px 2px #ffffff85,
+    0 2px 3px #0006;
+  color: white;
+}
+.dock-0 {
+  background: linear-gradient(145deg, #ffb586, #f27445);
+}
+.dock-1 {
+  background: linear-gradient(145deg, #b4beb2, #7c8b7f);
+}
+.dock-2 {
+  background: linear-gradient(145deg, #b3a2ed, #8470ca);
+}
+.dock-3 {
+  background: linear-gradient(145deg, #84b6dd, #4d88bb);
+}
+.dock-item i {
+  position: absolute;
+  bottom: -6px;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+}
+.dock-tooltip,
+.dock-selection {
+  position: absolute;
+  white-space: nowrap;
+  font:
+    10px ui-monospace,
+    Consolas,
+    monospace;
+  pointer-events: none;
+}
+.dock-tooltip {
+  bottom: calc(100% + 8px);
+  background: #252923;
+  color: white;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+.dock-selection {
+  top: calc(100% + 17px);
+  width: 100%;
+  text-align: center;
+  color: #465746;
+}
+.toast-study {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 21px;
+  transform: translateY(4px);
+}
+.toast-pile {
+  position: relative;
+  width: 214px;
+  height: 74px;
+  display: grid;
+  place-items: center;
+}
+.notice {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 51px;
+  padding: 0 13px;
+  border-radius: 11px;
+  background: #fff;
+  border: 1px solid #cdc6d7;
+  box-shadow: 0 6px 12px -5px #5a47655c;
+  transform: translateY(calc(-11px * var(--level)))
+    scale(calc(1 - 0.075 * var(--level)));
+  transition:
+    transform 0.32s cubic-bezier(0.2, 0.8, 0.25, 1),
+    opacity 0.3s;
+  transform-origin: 50% 0%;
+}
+@starting-style {
+  .notice {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+}
+.notice strong {
+  font-size: 12px;
+  font-weight: 600;
+}
+.notice button {
+  display: grid;
+  place-items: center;
+  margin-left: auto;
+  width: 24px;
+  height: 28px;
+  color: #89838e;
+}
+.notice-check {
+  width: 21px;
+  height: 21px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ddf3e3;
+  color: #2e8050;
+}
+.add-toast {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #bdb4cc;
+  background: #ffffff45;
+  border-radius: 6px;
+  padding: 5px 9px;
+  font:
+    10px ui-monospace,
+    Consolas,
+    monospace;
+}
+.add-toast:hover {
+  background: #ffffff95;
+}
+.empty-pile {
+  font-size: 12px;
+  color: #746b7e;
+}
+.range-study {
+  padding: 17px 18px;
+  background: #eef4f7;
+  border: 1px solid #aebec9;
+  border-radius: 15px;
+  width: 218px;
+  box-shadow:
+    0 7px 13px -6px #36516a50,
+    inset 0 1px white;
+}
+.range-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font:
+    9px ui-monospace,
+    Consolas,
+    monospace;
+  letter-spacing: 0.08em;
+}
+.range-label output {
+  font-size: 12px;
+  font-weight: 700;
+}
+.range-control {
+  display: block;
+  position: relative;
+  margin-top: 10px;
+}
+.range-bars {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  height: 40px;
+}
+.range-bars i {
+  flex: 1;
+  border-radius: 2px;
+  transition:
+    height 0.15s,
+    transform 0.25s;
+}
+.range-control:active i {
+  transform: scaleY(1.17);
+}
+.range-control input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+}
+.range-control:focus-within {
+  outline: 2px solid #364957;
+  outline-offset: 4px;
+}
+.hold-control {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #252321;
+  border-radius: 13px;
+  padding: 16px 24px;
+  background: linear-gradient(#41413e, #282826);
+  box-shadow:
+    inset 0 1px #79766d,
+    0 3px 0 #181816,
+    0 8px 16px #61463c45;
+  color: white;
+  touch-action: none;
+  user-select: none;
+}
+.hold-control > span:last-child {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.hold-fill {
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: #437960;
+  transition: transform 0.13s;
+}
+.holding .hold-fill {
+  transform: scaleX(1);
+  transition-duration: 0.85s;
+  transition-timing-function: linear;
+}
+.done .hold-fill {
+  transform: scaleX(1);
+}
+.segment-control {
+  position: relative;
+  display: flex;
+  padding: 5px;
+  border: 1px solid #bfab99;
+  background: #dbc6b3;
+  border-radius: 13px;
+  box-shadow:
+    inset 0 1px 3px #76614f33,
+    0 5px 9px #79675220;
+}
+.segment-control i {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  bottom: 5px;
+  width: 65px;
+  border-radius: 9px;
+  background: #fffaf5;
+  box-shadow: 0 2px 4px #614b3836;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.segment-control button {
+  position: relative;
+  width: 65px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 10px;
+}
+.segment-control button[aria-pressed="false"] {
+  color: #685d53;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dock-item,
+  .notice,
+  .segment-control i,
+  .range-bars i,
+  .hold-fill {
+    transition: none;
+  }
+}
