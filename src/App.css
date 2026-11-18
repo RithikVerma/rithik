@@ -17,6 +17,8 @@
 .menu-toggle, .mobile-nav { display: none; }
 
 .hero { padding-block: clamp(32px, 4.5vw, 62px); }
+.hero-banner { display: block; margin-bottom: clamp(20px, 3vw, 32px); }
+.hero-banner img { display: block; width: 100%; height: auto; border-radius: 8px; }
 h1, h2, h3 { font-weight: 600; }
 h1 { font-size: clamp(28px, 3.6vw, 44px); line-height: 1.06; letter-spacing: -.065em; }
 .role { font-size: clamp(15px, 1.8vw, 19px); color: var(--muted); margin-top: 5px; }
