@@ -17,11 +17,24 @@
 .menu-toggle, .mobile-nav { display: none; }
 
 .hero { padding-block: clamp(32px, 4.5vw, 62px); }
-.hero-banner { display: block; margin-bottom: clamp(20px, 3vw, 32px); }
-.hero-banner img { display: block; width: 100%; height: auto; border-radius: 8px; }
 h1, h2, h3 { font-weight: 600; }
 h1 { font-size: clamp(28px, 3.6vw, 44px); line-height: 1.06; letter-spacing: -.065em; }
 .role { font-size: clamp(15px, 1.8vw, 19px); color: var(--muted); margin-top: 5px; }
+.hero-role { position: relative; }
+.role-summary { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.role-cycle { display: inline-grid; overflow: hidden; vertical-align: top; }
+.role-cycle > span { grid-area: 1 / 1; animation: role-turn 6s ease-in-out infinite; }
+.role-cycle > span + span { animation-delay: -3s; }
+@keyframes role-turn {
+  0%, 44% { opacity: 1; transform: translateY(0); }
+  50%, 90% { opacity: 0; transform: translateY(-.25em); }
+  91%, 94% { opacity: 0; transform: translateY(.25em); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .role-cycle { display: none; }
+  .role-summary { position: static; clip-path: none; }
+}
 .hero-description { max-width: 60ch; font-size: 17px; line-height: 1.6; margin-top: 20px; }
 .hero-actions { flex-wrap: wrap; gap: 12px 23px; margin-top: 13px; }
 .hero-actions a, .location, .project-links a, .social a, footer a { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; }
